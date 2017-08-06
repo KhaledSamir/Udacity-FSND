@@ -1,0 +1,41 @@
+<style media="screen">
+.red, .green, .blue {
+  width: 200px;
+  height:200px;
+  color: white;
+  text-align: center;
+  display: inline-block;
+}
+
+.red {
+  position: relative;
+
+  top: 100px;
+  left: 20px;
+  background: red;
+}
+
+.green {
+  z-index: 1px;
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  background: green;
+}
+
+.blue {
+  top: 100px;
+  left: 100px;
+  background: blue;
+}
+
+</style>
+<div>
+  <span class="red">Red</span>
+</div>
+<div>
+  <span class="green">Green</span>
+</div>
+<div>
+  <span class="blue">Blue</span>
+</div>

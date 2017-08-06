@@ -1,0 +1,43 @@
+<style media="screen">
+.red, .green, .blue {
+  position: absolute;
+  width: 100px;
+  color: white;
+  line-height: 100px;
+  text-align: center;
+}
+
+div:first-child{
+  opacity:0.99;
+}
+
+.red {
+  z-index: 1;
+  top: 20px;
+  left: 20px;
+  background: red;
+}
+
+.green {
+  top: 60px;
+  left: 60px;
+  background: green;
+}
+
+.blue {
+  top: 100px;
+  left: 100px;
+  background: blue;
+}
+
+</style>
+
+<div>
+  <span class="red">Red</span>
+</div>
+<div>
+  <span class="green">Green</span>
+</div>
+<div>
+  <span class="blue">Blue</span>
+</div>

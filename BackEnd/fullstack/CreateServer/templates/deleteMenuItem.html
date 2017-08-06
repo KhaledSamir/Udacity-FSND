@@ -1,0 +1,9 @@
+<html>
+    <body>
+        <h1>Are you sure you wanna remove {{ i.name }}</h1>
+
+        <form method="POST" action="{{url_for('deletemenuitem', restaurantId = restaurantId , menuItemId = menuItemId )}}">
+            <input type="submit" value="Delete" />
+        </form>
+    </body>
+</html>
