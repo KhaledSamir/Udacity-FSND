@@ -28,7 +28,26 @@ function loadData() {
         data.response.docs.forEach(function(elm) {
             $nytElem.append('<li class="article">' + elm.snippet + '</li>')
         });
+    }).error(function (e){
+        $nytHeaderElem.text('No New York Article can be loaded')
     })
+
+    var wikiUrl = "https://en.wikipedidsadsadsadsadsaaa.org/w/api.php?action=opensearch&format=json&search=" + street;
+    $.ajax({
+        url : wikiUrl , 
+        dataType : 'jsonp',
+        success : function (data) {
+            data[3].forEach(function (elm){
+                $wikiElem.append('<li><a href="' + elm + '">' +elm+ ' </a></li>')
+            })
+        },
+        onError : function (e){
+           alert('Error happened!')
+        }
+
+    })
+
+    
 
     return false;
 };
