@@ -1,4 +1,3 @@
-
 function loadData() {
 
     var $body = $('body');
@@ -40,9 +39,6 @@ function loadData() {
             data[3].forEach(function (elm){
                 $wikiElem.append('<li><a href="' + elm + '">' +elm+ ' </a></li>')
             })
-        },
-        onError : function (e){
-           alert('Error happened!')
         }
 
     })
