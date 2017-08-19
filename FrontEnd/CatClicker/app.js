@@ -42,6 +42,7 @@
 			model.currentCat = model.cats[0];
 			view.init();
 			this.assignButtons();
+			this.hideAdmin();
 		},
 		getCats: function () {
 			return model.cats;
@@ -56,6 +57,9 @@
 			model.currentCat.clickCount++;
 			view.render();
 		},
+		hideAdmin : function () {
+			view.hideAdmin();
+		},
 		assignButtons: function () {
 			var cats = this.getCats();
 			for (var i = 0; i < cats.length; i++) {
@@ -67,6 +71,15 @@
 					}
 				}(i))
 			}
+		},
+
+		save : function (cat){
+			var oldCat = model.currentCat;
+			var index = model.cats.findIndex(cat =>  cat.name == oldCat.name );
+			model.currentCat = cat;
+			model.cats[index] = cat;
+			view.hideAdmin();
+			view.render();
 		}
 	}
 
@@ -77,6 +90,9 @@
 			this.catName = document.getElementById('name');
 			this.catCounter = document.getElementById('counter');
 			this.catImg = document.getElementById('cat-img')
+			this.catNameIn = document.getElementById('catName')
+			this.catUrlIn = document.getElementById('catUrl')
+			this.catClicksIn = document.getElementById('catClicks')
 
 			var cats = Octupus.getCats();
 			for (var i = 0; i < cats.length; i++) {
@@ -88,16 +104,48 @@
 				Octupus.increateCounter();
 			})
 
+			this.assignViewButtons();
+
 			this.render();
 		},
 
+		assignViewButtons : function (){
+			$('#adminBtn').click(function (){
+				view.showAdmin();
+			});
 
+			$('#cancelBtn').click(function(){
+				view.hideAdmin();
+			})
+
+			$('#saveBtn').click(function (){
+				var cat = {
+					name : view.catNameIn.value,
+					imgSrc : view.catUrlIn.value,
+					clickCount : view.catClicksIn.value
+				}
+				Octupus.save(cat);
+			})
+		},
+		
+		hideAdmin : function () {
+			this.adminForm = document.getElementById('adminForm');
+			$(this.adminForm).hide();
+		},
+
+		showAdmin : function (){
+			$(this.adminForm).show();
+		},
 
 		render: function () {
 			var currentCat = Octupus.getCurrentCat();
 			this.catName.textContent = currentCat.name;
 			this.catCounter.innerText = currentCat.clickCount;
 			this.catImg.src = currentCat.imgSrc;
+
+			this.catNameIn.value = currentCat.name;
+			this.catClicksIn.value = currentCat.clickCount;
+			this.catUrlIn.value = currentCat.imgSrc;
 		}
 	}
 

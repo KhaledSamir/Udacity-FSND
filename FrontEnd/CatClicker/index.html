@@ -9,8 +9,31 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div id="catList" class="col-md-6">
+			<div class="col-md-6">
+			<div id="catList"></div>
+			<br/>
+			<button class="btn" id="adminBtn">Admin</button>
+			
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<div id="adminForm">
+				<form action="#">
+					<label>Name : </label>
+					<input type="text" name="name" id="catName" />
+					<br/>
+					<label>Url : </label>
+					<input type="text" name="url" id="catUrl" />
+					<br/>
+					<label>Clicks : </label>
+					<input type="text" name="Clicks" id="catClicks" />
 
+					<button type="button" class="btn btn-primary" id="cancelBtn">Cancel</button>
+					<button type="button" value="Save"  class="btn" id="saveBtn">Save</button>
+				</form>
+			</div>
 			</div>
 			<div id="cat" class="col-md-6">
 					<div id="name" class="name"></div> 
